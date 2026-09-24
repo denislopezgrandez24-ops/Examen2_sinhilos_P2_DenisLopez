@@ -20,17 +20,20 @@ public class Inventario {
         
     }
     
-    public void buscarProducto(String codigo){
+    public String buscarProducto(String codigo){
         
+        String texto = "";
         for(int i=0; i<productos.size(); i++){
                 
             if(productos.get(i).equals(codigo)){
+                
+                texto = productos.get(i).toString();
                 
             }
                 
         }
         
-        
+        return texto;
     }
     
 }
