@@ -15,6 +15,7 @@ public class Examen2_sinhilos_P2_DenisLopez {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        // <, >, \
     }
     
 }
