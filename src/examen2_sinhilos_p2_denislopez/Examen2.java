@@ -58,10 +58,11 @@ public class Examen2 extends javax.swing.JFrame {
         jTextFieldcategoria = new javax.swing.JTextField();
         jTextFieldprecio = new javax.swing.JTextField();
         jTextFieldcantidad = new javax.swing.JTextField();
-        jButtonguardararchivo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonguardararchivo1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,13 +84,6 @@ public class Examen2 extends javax.swing.JFrame {
         });
         jButtonregistrar.addActionListener(this::jButtonregistrarActionPerformed);
 
-        jButtonguardararchivo.setText("Guardar Archivo");
-        jButtonguardararchivo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonguardararchivoMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -97,25 +91,21 @@ public class Examen2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonregistrar)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonguardararchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldcodigo)
-                            .addComponent(jTextFieldnombre)
-                            .addComponent(jTextFieldcategoria)
-                            .addComponent(jTextFieldprecio)
-                            .addComponent(jTextFieldcantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonregistrar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldcodigo)
+                        .addComponent(jTextFieldnombre)
+                        .addComponent(jTextFieldcategoria)
+                        .addComponent(jTextFieldprecio)
+                        .addComponent(jTextFieldcantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,9 +131,7 @@ public class Examen2 extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonregistrar)
-                    .addComponent(jButtonguardararchivo))
+                .addComponent(jButtonregistrar)
                 .addGap(28, 28, 28))
         );
 
@@ -169,7 +157,7 @@ public class Examen2 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,6 +168,36 @@ public class Examen2 extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Mostrar productos", jPanel2);
+
+        jButtonguardararchivo1.setText("Guardar Archivo");
+        jButtonguardararchivo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonguardararchivo1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(204, 204, 204)
+                    .addComponent(jButtonguardararchivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(205, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(212, 212, 212)
+                    .addComponent(jButtonguardararchivo1)
+                    .addContainerGap(213, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Guardar Archivo", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,7 +237,7 @@ public class Examen2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Agregado al arraylist y tabla");
     }//GEN-LAST:event_jButtonregistrarMouseClicked
 
-    private void jButtonguardararchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonguardararchivoMouseClicked
+    private void jButtonguardararchivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonguardararchivo1MouseClicked
         
         JFileChooser seleccion = new JFileChooser ();
         int op = seleccion.showSaveDialog(this);
@@ -232,22 +250,14 @@ public class Examen2 extends javax.swing.JFrame {
                 
                 FileWriter fw = new FileWriter (archivo);
                 BufferedWriter bw = new BufferedWriter (fw);
-                Inventario nuevo = new Inventario ();
-                
-                for(int i=0; i<nuevo.productos.size(); i++){
-                    
-                    
-                    
-                }
                 
             }
             catch(IOException e){
                 
-                System.out.println("Error");
-                
             }
+            
         }
-    }//GEN-LAST:event_jButtonguardararchivoMouseClicked
+    }//GEN-LAST:event_jButtonguardararchivo1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -275,7 +285,7 @@ public class Examen2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonguardararchivo;
+    private javax.swing.JButton jButtonguardararchivo1;
     private javax.swing.JButton jButtonregistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,6 +294,7 @@ public class Examen2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
