@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +36,8 @@ public class Examen2 extends javax.swing.JFrame {
         jTable1.setModel(tabla);
         
     }
+    
+    ArrayList<Producto>listas = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +66,10 @@ public class Examen2 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButtonguardararchivo1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldbuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,24 +187,60 @@ public class Examen2 extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(204, 204, 204)
-                    .addComponent(jButtonguardararchivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(205, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addComponent(jButtonguardararchivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(212, 212, 212)
-                    .addComponent(jButtonguardararchivo1)
-                    .addContainerGap(213, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jButtonguardararchivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Guardar Archivo", jPanel3);
+
+        jButton1.setText("Buscar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setText("Ingrese codigo");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jTextFieldbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(176, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel6)
+                .addGap(35, 35, 35)
+                .addComponent(jTextFieldbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Buscar Producto", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,12 +266,23 @@ public class Examen2 extends javax.swing.JFrame {
         String nombre = jTextFieldnombre.getText();
         String categoria = jTextFieldcategoria.getText();
         double precio = Double.parseDouble(jTextFieldprecio.getText());
+        if(precio <= 0){
+            
+            JOptionPane.showMessageDialog(this, "El precio debe ser mayor que 0");
+            
+        }
         int cantidad = Integer.parseInt(jTextFieldcantidad.getText());
+        if(cantidad < 0){
+            
+            JOptionPane.showMessageDialog(this, "la cantidad no puede ser negativa");
+            
+        }
         
         Producto nuevo = new Producto (codigo, nombre, categoria, precio, cantidad);
+        listas.add(nuevo);
         
         Inventario vacio = new Inventario ();
-        vacio.agregarProducto(nuevo);
+        vacio.agregarProducto(nuevo, listas);
         
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         Object [] lista = {nuevo.getCodigo(), nuevo.getNombre(), nuevo.getCategoria(), nuevo.getPrecio(), nuevo.getCantidad()};
@@ -251,13 +305,44 @@ public class Examen2 extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter (archivo);
                 BufferedWriter bw = new BufferedWriter (fw);
                 
+                String texto = "";
+                for(Producto p : listas){
+                    
+                    texto += p.toString() + "\n";
+                    
+                }
+                bw.write(texto);
+                bw.close();
+                JOptionPane.showMessageDialog(this, "Guardado");
+                
             }
             catch(IOException e){
+                
+                JOptionPane.showMessageDialog(this, "Error");
                 
             }
             
         }
     }//GEN-LAST:event_jButtonguardararchivo1MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        
+        String codigo = jTextFieldbuscar.getText();
+        
+        Inventario nuevo = new Inventario ();
+        String texto = "";
+        for(int i=0; i<listas.size(); i++){
+                
+            if(listas.get(i).equals(codigo)){
+                
+                texto = listas.get(i).toString();
+                
+            }
+                
+        }
+        JOptionPane.showMessageDialog(this, texto);
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,6 +370,7 @@ public class Examen2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonguardararchivo1;
     private javax.swing.JButton jButtonregistrar;
     private javax.swing.JLabel jLabel1;
@@ -292,12 +378,15 @@ public class Examen2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldbuscar;
     private javax.swing.JTextField jTextFieldcantidad;
     private javax.swing.JTextField jTextFieldcategoria;
     private javax.swing.JTextField jTextFieldcodigo;

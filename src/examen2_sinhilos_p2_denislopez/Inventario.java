@@ -12,22 +12,22 @@ import java.util.ArrayList;
  */
 public class Inventario {
     
-    ArrayList<Producto>productos = new ArrayList<>();
+    //ArrayList<Producto>productos = new ArrayList<>();
     
-    public void agregarProducto(Producto p){
+    public void agregarProducto(Producto p, ArrayList<Producto>listas){
         
-        this.productos.add(p);
+        listas.add(p);
         
     }
     
-    public String buscarProducto(String codigo){
+    public String buscarProducto(String codigo, ArrayList<Producto>listas){
         
         String texto = "";
-        for(int i=0; i<productos.size(); i++){
+        for(int i=0; i<listas.size(); i++){
                 
-            if(productos.get(i).equals(codigo)){
+            if(listas.get(i).equals(codigo)){
                 
-                texto = productos.get(i).toString();
+                texto += listas.get(i).toString();
                 
             }
                 
